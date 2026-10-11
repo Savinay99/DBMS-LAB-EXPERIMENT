@@ -1,0 +1,203 @@
+EXPERIMENT 3 — OUTPUT
+Employee–Department–Project Schema
+Student: Savinay Kumar Soni | Class: AI/ML-2(A) | UID: 25LBCS3064
+
+1. DEPARTMENT TABLE
++---------+------------+
+| dept_id | dept_name  |
++---------+------------+
+|       1 | IT         |
+|       2 | HR         |
+|       3 | Finance    |
+|       4 | Marketing  |
+|       5 | Operations |
++---------+------------+
+
+2. PROJECT TABLE
++------------+--------------------+
+| project_id | project_name       |
++------------+--------------------+
+|        101 | AI System          |
+|        102 | Web Development    |
+|        103 | Cloud Platform     |
+|        104 | Data Analytics     |
+|        105 | Cyber Security     |
+|        106 | Mobile Application |
+|        107 | Inventory System   |
+|        108 | Customer Support   |
++------------+--------------------+
+
+3. EMPLOYEE TABLE — 30 RECORDS
++--------+----------+----------+---------+------------+------------+
+| emp_id | emp_name | salary   | dept_id | project_id | manager_id |
++--------+----------+----------+---------+------------+------------+
+|      1 | Savinay  | 65000.00 |       1 |        101 |       NULL |
+|      2 | Rahul    | 70000.00 |       1 |        102 |          1 |
+|      3 | Aman     | 48000.00 |       2 |        108 |       NULL |
+|      4 | Priya    | 62000.00 |       3 |        104 |       NULL |
+|      5 | Neha     | 51000.00 |       4 |        106 |       NULL |
+|      6 | Rohan    | 73000.00 |       1 |        103 |          1 |
+|      7 | Anjali   | 58000.00 |       2 |        108 |          3 |
+|      8 | Karan    | 42000.00 |       5 |        107 |       NULL |
+|      9 | Pooja    | 46000.00 |       4 |        106 |          5 |
+|     10 | Vikas    | 58000.00 |       1 |        105 |          1 |
+|     11 | Simran   | 44000.00 |       2 |        108 |          3 |
+|     12 | Arjun    | 47000.00 |       3 |        104 |          4 |
+|     13 | Mehul    | 72000.00 |       1 |        101 |          1 |
+|     14 | Nikhil   | 60000.00 |       5 |        107 |          8 |
+|     15 | Kavya    | 54000.00 |       4 |        106 |          5 |
+|     16 | Varun    | 49000.00 |       3 |        104 |          4 |
+|     17 | Isha     | 51000.00 |       2 |        108 |          3 |
+|     18 | Yash     | 45000.00 |       5 |        107 |          8 |
+|     19 | Tanya    | 68000.00 |       1 |        102 |          1 |
+|     20 | Harsh    | 55000.00 |       4 |        106 |          5 |
+|     21 | Riya     | 59000.00 |       3 |        104 |          4 |
+|     22 | Dev      | 47000.00 |       2 |        108 |          3 |
+|     23 | Muskan   | 52000.00 |       5 |        107 |          8 |
+|     24 | Aditya   | 61000.00 |       1 |        103 |          1 |
+|     25 | Sahil    | 62000.00 |       3 |        105 |          4 |
+|     26 | Nisha    | 48000.00 |       2 |        108 |          3 |
+|     27 | Mohit    | 56000.00 |       4 |        106 |          5 |
+|     28 | Komal    | 51000.00 |       5 |        107 |          8 |
+|     29 | Abhishek | 59000.00 |       1 |        101 |          1 |
+|     30 | Shreya   | 49000.00 |       3 |        104 |          4 |
++--------+----------+----------+---------+------------+------------+
+
+4. SELECTION — EMPLOYEES WITH SALARY > 60000
++--------+----------+----------+
+| emp_id | emp_name | salary   |
++--------+----------+----------+
+|      1 | Savinay  | 65000.00 |
+|      2 | Rahul    | 70000.00 |
+|      4 | Priya    | 62000.00 |
+|      6 | Rohan    | 73000.00 |
+|     13 | Mehul    | 72000.00 |
+|     19 | Tanya    | 68000.00 |
+|     24 | Aditya   | 61000.00 |
+|     25 | Sahil    | 62000.00 |
++--------+----------+----------+
+
+5. AGGREGATE FUNCTIONS
++-----------------+----------------+----------------+---------------+--------------+
+| total_employees | average_salary | highest_salary | lowest_salary | total_salary |
++-----------------+----------------+----------------+---------------+--------------+
+|              30 |   55400.000000 |       73000.00 |      42000.00 |   1662000.00 |
++-----------------+----------------+----------------+---------------+--------------+
+
+6. GROUP BY — EMPLOYEE COUNT BY DEPARTMENT
++---------+----------------+
+| dept_id | employee_count |
++---------+----------------+
+|       1 |              8 |
+|       2 |              6 |
+|       3 |              6 |
+|       4 |              5 |
+|       5 |              5 |
++---------+----------------+
+
+7. HAVING — DEPARTMENTS WITH AVERAGE SALARY > 50000
++---------+----------------+
+| dept_id | average_salary |
++---------+----------------+
+|       1 |   65750.000000 |
+|       3 |   54666.666667 |
+|       4 |   52400.000000 |
++---------+----------------+
+
+8. CASE EXPRESSION — SALARY CATEGORY
+Categories: High (salary >= 60000), Medium (salary >= 50000), Low (salary < 50000)
++--------+----------+----------+-----------------+
+| emp_id | emp_name | salary   | salary_category |
++--------+----------+----------+-----------------+
+|      1 | Savinay  | 65000.00 | High            |
+|      2 | Rahul    | 70000.00 | High            |
+|      3 | Aman     | 48000.00 | Low             |
+|      4 | Priya    | 62000.00 | High            |
+|      5 | Neha     | 51000.00 | Medium          |
+|      6 | Rohan    | 73000.00 | High            |
+|      7 | Anjali   | 58000.00 | Medium          |
+|      8 | Karan    | 42000.00 | Low             |
+|      9 | Pooja    | 46000.00 | Low             |
+|     10 | Vikas    | 58000.00 | Medium          |
+|     11 | Simran   | 44000.00 | Low             |
+|     12 | Arjun    | 47000.00 | Low             |
+|     13 | Mehul    | 72000.00 | High            |
+|     14 | Nikhil   | 60000.00 | High            |
+|     15 | Kavya    | 54000.00 | Medium          |
+|     16 | Varun    | 49000.00 | Low             |
+|     17 | Isha     | 51000.00 | Medium          |
+|     18 | Yash     | 45000.00 | Low             |
+|     19 | Tanya    | 68000.00 | High            |
+|     20 | Harsh    | 55000.00 | Medium          |
+|     21 | Riya     | 59000.00 | Medium          |
+|     22 | Dev      | 47000.00 | Low             |
+|     23 | Muskan   | 52000.00 | Medium          |
+|     24 | Aditya   | 61000.00 | High            |
+|     25 | Sahil    | 62000.00 | High            |
+|     26 | Nisha    | 48000.00 | Low             |
+|     27 | Mohit    | 56000.00 | Medium          |
+|     28 | Komal    | 51000.00 | Medium          |
+|     29 | Abhishek | 59000.00 | Medium          |
+|     30 | Shreya   | 49000.00 | Low             |
++--------+----------+----------+-----------------+
+
+9. ORDER BY — SALARY DESCENDING
++--------+----------+----------+
+| emp_id | emp_name | salary   |
++--------+----------+----------+
+|      6 | Rohan    | 73000.00 |
+|     13 | Mehul    | 72000.00 |
+|      2 | Rahul    | 70000.00 |
+|     19 | Tanya    | 68000.00 |
+|      1 | Savinay  | 65000.00 |
+|      4 | Priya    | 62000.00 |
+|     25 | Sahil    | 62000.00 |
+|     24 | Aditya   | 61000.00 |
+|     14 | Nikhil   | 60000.00 |
+|     21 | Riya     | 59000.00 |
+|     29 | Abhishek | 59000.00 |
+|     10 | Vikas    | 58000.00 |
+|      7 | Anjali   | 58000.00 |
+|     27 | Mohit    | 56000.00 |
+|     20 | Harsh    | 55000.00 |
+|     15 | Kavya    | 54000.00 |
+|     23 | Muskan   | 52000.00 |
+|     28 | Komal    | 51000.00 |
+|     17 | Isha     | 51000.00 |
+|      5 | Neha     | 51000.00 |
+|     30 | Shreya   | 49000.00 |
+|     16 | Varun    | 49000.00 |
+|     26 | Nisha    | 48000.00 |
+|      3 | Aman     | 48000.00 |
+|     22 | Dev      | 47000.00 |
+|     12 | Arjun    | 47000.00 |
+|      9 | Pooja    | 46000.00 |
+|     18 | Yash     | 45000.00 |
+|     11 | Simran   | 44000.00 |
+|      8 | Karan    | 42000.00 |
++--------+----------+----------+
+
+10. DEPARTMENT-WISE SALARY SUMMARY
++------------+-----------------+----------------+--------------+
+| dept_name  | total_employees | average_salary | total_salary |
++------------+-----------------+----------------+--------------+
+| IT         |               8 |   65750.000000 |    526000.00 |
+| Finance    |               6 |   54666.666667 |    328000.00 |
+| Marketing  |               5 |   52400.000000 |    262000.00 |
+| Operations |               5 |   50000.000000 |    250000.00 |
+| HR         |               6 |   49333.333333 |    296000.00 |
++------------+-----------------+----------------+--------------+
+
+11. PROJECT-WISE EMPLOYEE COUNT
++--------------------+----------------+
+| project_name       | employee_count |
++--------------------+----------------+
+| Customer Support   |              6 |
+| Data Analytics     |              5 |
+| Mobile Application |              5 |
+| Inventory System   |              5 |
+| AI System          |              3 |
+| Web Development    |              2 |
+| Cloud Platform     |              2 |
+| Cyber Security     |              2 |
++--------------------+----------------+

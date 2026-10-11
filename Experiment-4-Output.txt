@@ -1,0 +1,214 @@
+EXPERIMENT 4: OUTPUT
+DBMS LAB
+Name: Savinay Kumar Soni
+Class: AI/ML-2(A)
+UID: 25LBCS3064
+
+1. INNER JOIN OUTPUT
+
++--------+----------+------------+
+| emp_id | emp_name | dept_name  |
++--------+----------+------------+
+|      1 | Savinay  | IT         |
+|      2 | Anjali   | IT         |
+|      3 | Priya    | IT         |
+|      6 | Rohan    | IT         |
+|     13 | Mehul    | IT         |
+|     17 | Isha     | IT         |
+|     19 | Tanya    | IT         |
+|     24 | Sahil    | IT         |
+|      4 | Karan    | HR         |
+|      9 | Pooja    | HR         |
+|     11 | Simran   | HR         |
+|     18 | Yash     | HR         |
+|     22 | Dev      | HR         |
+|     26 | Nisha    | HR         |
+|     30 | Shreya   | HR         |
+|      5 | Aditya   | Finance    |
+|     10 | Vikas    | Finance    |
+|     14 | Nikhil   | Finance    |
+|     21 | Riya     | Finance    |
+|     25 | Aditi    | Finance    |
+|     29 | Abhishek | Finance    |
+|      7 | Anjali   | Marketing  |
+|     12 | Arjun    | Marketing  |
+|     15 | Kavya    | Marketing  |
+|     20 | Harsh    | Marketing  |
+|     28 | Komal    | Marketing  |
+|      8 | Karan    | Operations |
+|     16 | Varun    | Operations |
+|     23 | Muskan   | Operations |
+|     27 | Mohit    | Operations |
++--------+----------+------------+
+
+2. LEFT JOIN OUTPUT
+
+The LEFT JOIN returned all 30 employees with their matching department names. The output rows were the same employee and department combinations shown in the INNER JOIN result.
+
+3. SELF JOIN OUTPUT
+
++--------+----------+--------------+
+| emp_id | emp_name | manager_name |
++--------+----------+--------------+
+|      1 | Savinay  | NULL         |
+|      2 | Anjali   | Savinay      |
+|      3 | Priya    | Savinay      |
+|      4 | Karan    | NULL         |
+|      5 | Aditya   | NULL         |
+|      6 | Rohan    | Savinay      |
+|      7 | Anjali   | NULL         |
+|      8 | Karan    | NULL         |
+|      9 | Pooja    | Karan        |
+|     10 | Vikas    | Aditya       |
+|     11 | Simran   | Karan        |
+|     12 | Arjun    | Anjali       |
+|     13 | Mehul    | Savinay      |
+|     14 | Nikhil   | Aditya       |
+|     15 | Kavya    | Anjali       |
+|     16 | Varun    | Karan        |
+|     17 | Isha     | Savinay      |
+|     18 | Yash     | Karan        |
+|     19 | Tanya    | Savinay      |
+|     20 | Harsh    | Anjali       |
+|     21 | Riya     | Aditya       |
+|     22 | Dev      | Karan        |
+|     23 | Muskan   | Karan        |
+|     24 | Sahil    | Savinay      |
+|     25 | Aditi    | Aditya       |
+|     26 | Nisha    | Karan        |
+|     27 | Mohit    | Karan        |
+|     28 | Komal    | Anjali       |
+|     29 | Abhishek | Aditya       |
+|     30 | Shreya   | Karan        |
++--------+----------+--------------+
+
+4. THREE-WAY JOIN OUTPUT
+
++--------+----------+------------+--------------------+
+| emp_id | emp_name | dept_name  | project_name       |
++--------+----------+------------+--------------------+
+|      1 | Savinay  | IT         | AI System          |
+|      2 | Anjali   | IT         | Web Development    |
+|      3 | Priya    | IT         | Cloud Platform     |
+|      4 | Karan    | HR         | Customer Support   |
+|      5 | Aditya   | Finance    | Data Analytics     |
+|      6 | Rohan    | IT         | AI System          |
+|      7 | Anjali   | Marketing  | Web Development    |
+|      8 | Karan    | Operations | Inventory System   |
+|      9 | Pooja    | HR         | Customer Support   |
+|     10 | Vikas    | Finance    | Data Analytics     |
+|     11 | Simran   | HR         | Customer Support   |
+|     12 | Arjun    | Marketing  | Web Development    |
+|     13 | Mehul    | IT         | AI System          |
+|     14 | Nikhil   | Finance    | Data Analytics     |
+|     15 | Kavya    | Marketing  | Mobile Application |
+|     16 | Varun    | Operations | Inventory System   |
+|     17 | Isha     | IT         | Cloud Platform     |
+|     18 | Yash     | HR         | Customer Support   |
+|     19 | Tanya    | IT         | Mobile Application |
+|     20 | Harsh    | Marketing  | Web Development    |
+|     21 | Riya     | Finance    | Data Analytics     |
+|     22 | Dev      | HR         | Customer Support   |
+|     23 | Muskan   | Operations | Inventory System   |
+|     24 | Sahil    | IT         | AI System          |
+|     25 | Aditi    | Finance    | Data Analytics     |
+|     26 | Nisha    | HR         | Customer Support   |
+|     27 | Mohit    | Operations | Inventory System   |
+|     28 | Komal    | Marketing  | Mobile Application |
+|     29 | Abhishek | Finance    | Data Analytics     |
+|     30 | Shreya   | HR         | Customer Support   |
++--------+----------+------------+--------------------+
+
+5. CORRELATED SUBQUERY OUTPUT
+
+Employees whose salary is greater than the average salary of their own department:
+
++--------+----------+----------+---------+
+| emp_id | emp_name | salary   | dept_id |
++--------+----------+----------+---------+
+|      1 | Savinay  | 65000.00 |       1 |
+|      5 | Aditya   | 59000.00 |       3 |
+|      6 | Rohan    | 70000.00 |       1 |
+|      9 | Pooja    | 46000.00 |       2 |
+|     10 | Vikas    | 58000.00 |       3 |
+|     13 | Mehul    | 72000.00 |       1 |
+|     14 | Nikhil   | 62000.00 |       3 |
+|     15 | Kavya    | 54000.00 |       4 |
+|     16 | Varun    | 49000.00 |       5 |
+|     19 | Tanya    | 68000.00 |       1 |
+|     20 | Harsh    | 55000.00 |       4 |
+|     22 | Dev      | 47000.00 |       2 |
+|     23 | Muskan   | 52000.00 |       5 |
+|     24 | Sahil    | 62000.00 |       1 |
+|     25 | Aditi    | 59000.00 |       3 |
+|     26 | Nisha    | 48000.00 |       2 |
+|     30 | Shreya   | 49000.00 |       2 |
++--------+----------+----------+---------+
+
+6. EXISTS OUTPUT
+
++---------+------------+
+| dept_id | dept_name  |
++---------+------------+
+|       1 | IT         |
+|       2 | HR         |
+|       3 | Finance    |
+|       4 | Marketing  |
+|       5 | Operations |
++---------+------------+
+
+7. SIMULATED INTERSECT OUTPUT
+
++--------+----------+
+| emp_id | emp_name |
++--------+----------+
+|      1 | Savinay  |
+|      2 | Anjali   |
+|      3 | Priya    |
+|      5 | Aditya   |
+|      6 | Rohan    |
+|     10 | Vikas    |
+|     13 | Mehul    |
+|     14 | Nikhil   |
+|     17 | Isha     |
+|     19 | Tanya    |
+|     21 | Riya     |
+|     24 | Sahil    |
+|     25 | Aditi    |
+|     29 | Abhishek |
++--------+----------+
+
+8. SIMULATED EXCEPT OUTPUT
+
++--------+----------+
+| emp_id | emp_name |
++--------+----------+
+|      1 | Savinay  |
+|      6 | Rohan    |
+|     13 | Mehul    |
+|     14 | Nikhil   |
+|     19 | Tanya    |
+|     24 | Sahil    |
++--------+----------+
+
+9. EXPLAIN OUTPUT FOR INNER JOIN
+
++----+-------------+-------+------------+--------+---------------+---------+---------+----------------------+------ +----------+-------------+
+| id | select_type | table | partitions | type   | possible_keys | key     | key_len | ref                  | rows | filtered | Extra       |
++----+-------------+-------+------------+--------+---------------+---------+---------+----------------------+-------+----------+-------------+
+|  1 | SIMPLE      | e     | NULL       | ALL    | dept_id       | NULL    | NULL    | NULL                 |   30 |   100.00 | Using where |
+|  1 | SIMPLE      | d     | NULL       | eq_ref | PRIMARY       | PRIMARY | 4       | sandbox_db.e.dept_id |    1 |   100.00 | NULL        |
++----+-------------+-------+------------+--------+---------------+---------+---------+----------------------+-------+----------+-------------+
+
+10. EXPLAIN OUTPUT FOR SUBQUERY
+
++----+--------------+-------------+------------+--------+---------------------+---------------------+---------+----------------------+------ +----------+-------------+
+| id | select_type  | table       | partitions | type   | possible_keys       | key                 | key_len | ref                  | rows | filtered | Extra       |
++----+--------------+-------------+------------+--------+---------------------+---------------------+---------+----------------------+-------+----------+-------------+
+|  1 | SIMPLE       | e           | NULL       | ALL    | dept_id             | NULL                | NULL    | NULL                 |   30 |   100.00 | Using where |
+|  1 | SIMPLE       | <subquery2> | NULL       | eq_ref | <auto_distinct_key> | <auto_distinct_key> | 5       | sandbox_db.e.dept_id |    1 |   100.00 | NULL        |
+|  2 | MATERIALIZED | Employee    | NULL       | ALL    | dept_id             | NULL                | NULL    | NULL                 |   30 |    33.33 | Using where |
++----+--------------+-------------+------------+--------+---------------------+---------------------+---------+----------------------+-------+----------+-------------+
+
+RESULT:
+The INNER JOIN, LEFT JOIN, self-join, three-way join, correlated subquery, EXISTS, simulated set-operation queries, and EXPLAIN statements executed successfully in MySQL.

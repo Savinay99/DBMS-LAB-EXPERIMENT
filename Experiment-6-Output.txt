@@ -1,0 +1,79 @@
+EXPERIMENT 6: OUTPUT
+DBMS LAB
+Name: Savinay Kumar Soni
+Class: AI/ML-2(A)
+UID: 25LBCS3064
+
+1. EMPLOYEE BEFORE TRANSFER
+
++--------+----------+---------+
+| emp_id | emp_name | dept_id |
++--------+----------+---------+
+|      2 | Anjali   |       1 |
++--------+----------+---------+
+
+2. STORED PROCEDURE OUTPUT
+
++-----------------------------------+
+| message                           |
++-----------------------------------+
+| Employee transferred successfully |
++-----------------------------------+
+
+3. EMPLOYEE AFTER TRANSFER
+
++--------+----------+---------+
+| emp_id | emp_name | dept_id |
++--------+----------+---------+
+|      2 | Anjali   |       3 |
++--------+----------+---------+
+
+4. AUDIT LOG AFTER DEPARTMENT TRANSFER
+
++----------+--------+-------------+-------------+------------+------------+-------------+---------------------+
+| audit_id | emp_id | old_dept_id | new_dept_id | old_salary | new_salary | action_type | action_time         |
++----------+--------+-------------+-------------+------------+------------+-------------+---------------------+
+|        1 |      2 |           1 |           3 |   50000.00 |   50000.00 | UPDATE      | 2026-10-11 17:41:08 |
++----------+--------+-------------+-------------+------------+------------+-------------+---------------------+
+
+5. EMPLOYEE SALARY BEFORE UPDATE
+
++--------+----------+----------+
+| emp_id | emp_name | salary   |
++--------+----------+----------+
+|      2 | Anjali   | 50000.00 |
++--------+----------+----------+
+
+6. AUDIT LOG AFTER SALARY UPDATE
+
++----------+--------+-------------+-------------+------------+------------+-------------+---------------------+
+| audit_id | emp_id | old_dept_id | new_dept_id | old_salary | new_salary | action_type | action_time         |
++----------+--------+-------------+-------------+------------+------------+-------------+---------------------+
+|        1 |      2 |           1 |           3 |   50000.00 |   50000.00 | UPDATE      | 2026-10-11 17:41:08 |
+|        2 |      2 |           3 |           3 |   50000.00 |   51000.00 | UPDATE      | 2026-10-11 17:41:08 |
++----------+--------+-------------+-------------+------------+------------+-------------+---------------------+
+
+7. AUDIT LOG FOR EMPLOYEE ID 2
+
++----------+--------+-------------+-------------+------------+------------+-------------+---------------------+
+| audit_id | emp_id | old_dept_id | new_dept_id | old_salary | new_salary | action_type | action_time         |
++----------+--------+-------------+-------------+------------+------------+-------------+---------------------+
+|        1 |      2 |           1 |           3 |   50000.00 |   50000.00 | UPDATE      | 2026-10-11 17:41:08 |
+|        2 |      2 |           3 |           3 |   50000.00 |   51000.00 | UPDATE      | 2026-10-11 17:41:08 |
++----------+--------+-------------+-------------+------------+------------+-------------+---------------------+
+
+8. EMPLOYEE AFTER SALARY UPDATE
+
++--------+----------+----------+
+| emp_id | emp_name | salary   |
++--------+----------+----------+
+|      2 | Anjali   | 51000.00 |
++--------+----------+----------+
+
+9. EDGE CASE QUERIES
+
+The query for employee ID 999 returned no rows because that employee does not exist.
+The query for department ID 999 returned no rows because that department does not exist.
+
+RESULT:
+The transfer_employee stored procedure transferred employee 2 from department 1 to department 3. Salary validation triggers and audit logging for updates were tested. Queries for non-existing employee and department IDs returned no rows.

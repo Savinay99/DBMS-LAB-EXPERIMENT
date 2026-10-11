@@ -1,0 +1,134 @@
+EXPERIMENT 5: OUTPUT
+DBMS LAB
+Name: Savinay Kumar Soni
+Class: AI/ML-2(A)
+UID: 25LBCS3064
+
+1. DEPARTMENT SALARY SUMMARY VIEW
+
++---------+------------+----------------+--------------+----------------+
+| dept_id | dept_name  | employee_count | total_salary | average_salary |
++---------+------------+----------------+--------------+----------------+
+|       1 | IT         |              8 |    490000.00 |   61250.000000 |
+|       2 | HR         |              7 |    321000.00 |   45857.142857 |
+|       3 | Finance    |              6 |    343000.00 |   57166.666667 |
+|       4 | Marketing  |              5 |    258000.00 |   51600.000000 |
+|       5 | Operations |              4 |    188000.00 |   47000.000000 |
++---------+------------+----------------+--------------+----------------+
+
+2. EMPLOYEE HIERARCHY VIEW
+
++--------+----------+---------+------------+--------------+
+| emp_id | emp_name | dept_id | manager_id | manager_name |
++--------+----------+---------+------------+--------------+
+|      1 | Savinay  |       1 |       NULL | NULL         |
+|      2 | Anjali   |       1 |          1 | Savinay      |
+|      3 | Priya    |       1 |          1 | Savinay      |
+|      4 | Karan    |       2 |       NULL | NULL         |
+|      5 | Aditya   |       3 |       NULL | NULL         |
+|      6 | Rohan    |       1 |          1 | Savinay      |
+|      7 | Anjali   |       4 |       NULL | NULL         |
+|      8 | Karan    |       5 |       NULL | NULL         |
+|      9 | Pooja    |       2 |          4 | Karan        |
+|     10 | Vikas    |       3 |          5 | Aditya       |
+|     11 | Simran   |       2 |          4 | Karan        |
+|     12 | Arjun    |       4 |          7 | Anjali       |
+|     13 | Mehul    |       1 |          1 | Savinay      |
+|     14 | Nikhil   |       3 |          5 | Aditya       |
+|     15 | Kavya    |       4 |          7 | Anjali       |
+|     16 | Varun    |       5 |          8 | Karan        |
+|     17 | Isha     |       1 |          1 | Savinay      |
+|     18 | Yash     |       2 |          4 | Karan        |
+|     19 | Tanya    |       1 |          1 | Savinay      |
+|     20 | Harsh    |       4 |          7 | Anjali       |
+|     21 | Riya     |       3 |          5 | Aditya       |
+|     22 | Dev      |       2 |          4 | Karan        |
+|     23 | Muskan   |       5 |          8 | Karan        |
+|     24 | Sahil    |       1 |          1 | Savinay      |
+|     25 | Aditi    |       3 |          5 | Aditya       |
+|     26 | Nisha    |       2 |          4 | Karan        |
+|     27 | Mohit    |       5 |          8 | Karan        |
+|     28 | Komal    |       4 |          7 | Anjali       |
+|     29 | Abhishek |       3 |          5 | Aditya       |
+|     30 | Shreya   |       2 |          4 | Karan        |
++--------+----------+---------+------------+--------------+
+
+3. VIEW UPDATABILITY TEST
+
+IT_Employees view before update:
+
++--------+----------+----------+---------+
+| emp_id | emp_name | salary   | dept_id |
++--------+----------+----------+---------+
+|      1 | Savinay  | 65000.00 |       1 |
+|      2 | Anjali   | 50000.00 |       1 |
+|      3 | Priya    | 52000.00 |       1 |
+|      6 | Rohan    | 70000.00 |       1 |
+|     13 | Mehul    | 72000.00 |       1 |
+|     17 | Isha     | 51000.00 |       1 |
+|     19 | Tanya    | 68000.00 |       1 |
+|     24 | Sahil    | 62000.00 |       1 |
++--------+----------+----------+---------+
+
+IT_Employees view after update:
+
++--------+----------+----------+---------+
+| emp_id | emp_name | salary   | dept_id |
++--------+----------+----------+---------+
+|      1 | Savinay  | 65000.00 |       1 |
+|      2 | Anjali   | 51000.00 |       1 |
+|      3 | Priya    | 52000.00 |       1 |
+|      6 | Rohan    | 70000.00 |       1 |
+|     13 | Mehul    | 72000.00 |       1 |
+|     17 | Isha     | 51000.00 |       1 |
+|     19 | Tanya    | 68000.00 |       1 |
+|     24 | Sahil    | 62000.00 |       1 |
++--------+----------+----------+---------+
+
+Updated employee record:
+
++--------+----------+----------+---------+------------+------------+
+| emp_id | emp_name | salary   | dept_id | project_id | manager_id |
++--------+----------+----------+---------+------------+------------+
+|      2 | Anjali   | 51000.00 |       1 |        102 |          1 |
++--------+----------+----------+---------+------------+------------+
+
+4. RECURSIVE CTE OUTPUT: REPORTING CHAIN
+
++--------+----------+------------+-----------------+
+| emp_id | emp_name | manager_id | hierarchy_level |
++--------+----------+------------+-----------------+
+|      1 | Savinay  |       NULL |               1 |
+|      4 | Karan    |       NULL |               1 |
+|      5 | Aditya   |       NULL |               1 |
+|      7 | Anjali   |       NULL |               1 |
+|      8 | Karan    |       NULL |               1 |
+|      2 | Anjali   |          1 |               2 |
+|      3 | Priya    |          1 |               2 |
+|      6 | Rohan    |          1 |               2 |
+|      9 | Pooja    |          4 |               2 |
+|     10 | Vikas    |          5 |               2 |
+|     11 | Simran   |          4 |               2 |
+|     12 | Arjun    |          7 |               2 |
+|     13 | Mehul    |          1 |               2 |
+|     14 | Nikhil   |          5 |               2 |
+|     15 | Kavya    |          7 |               2 |
+|     16 | Varun    |          8 |               2 |
+|     17 | Isha     |          1 |               2 |
+|     18 | Yash     |          4 |               2 |
+|     19 | Tanya    |          1 |               2 |
+|     20 | Harsh    |          7 |               2 |
+|     21 | Riya     |          5 |               2 |
+|     22 | Dev      |          4 |               2 |
+|     23 | Muskan   |          8 |               2 |
+|     24 | Sahil    |          1 |               2 |
+|     25 | Aditi    |          5 |               2 |
+|     26 | Nisha    |          4 |               2 |
+|     27 | Mohit    |          8 |               2 |
+|     28 | Komal    |          7 |               2 |
+|     29 | Abhishek |          5 |               2 |
+|     30 | Shreya   |          4 |               2 |
++--------+----------+------------+-----------------+
+
+RESULT:
+The department salary summary view and employee hierarchy view were created successfully. The updatability of the IT_Employees view was tested by updating an employee's salary. A recursive CTE displayed the employee reporting chain with hierarchy levels.
