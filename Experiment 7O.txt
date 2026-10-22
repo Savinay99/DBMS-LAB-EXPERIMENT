@@ -1,0 +1,129 @@
+EXPERIMENT 7 - OUTPUT
+Normalization of a Denormalized Sales Table
+Database: MySQL (ByteXL)
+
+1. OUTPUT: SALES_UNF
+
++---------+------------+--------------+--------------+------------------+
+| OrderID | CustomerID | CustomerName | CustomerCity | ProductDetails   |
++---------+------------+--------------+--------------+------------------+
+|     101 |          1 | Rahul        | Lucknow      | Laptop, Mouse    |
+|     102 |          2 | Priya        | Delhi        | Keyboard, Mouse  |
+|     103 |          1 | Rahul        | Lucknow      | Keyboard, Laptop |
++---------+------------+--------------+--------------+------------------+
+
+2. OUTPUT: SALES_1NF
+
++---------+------------+--------------+--------------+-------------+
+| OrderID | CustomerID | CustomerName | CustomerCity | ProductName |
++---------+------------+--------------+--------------+-------------+
+|     101 |          1 | Rahul        | Lucknow      | Laptop      |
+|     101 |          1 | Rahul        | Lucknow      | Mouse       |
+|     102 |          2 | Priya        | Delhi        | Keyboard    |
+|     102 |          2 | Priya        | Delhi        | Mouse       |
+|     103 |          1 | Rahul        | Lucknow      | Keyboard    |
+|     103 |          1 | Rahul        | Lucknow      | Laptop      |
++---------+------------+--------------+--------------+-------------+
+
+3. OUTPUT: ORDERS_2NF
+
++---------+------------+--------------+--------------+
+| OrderID | CustomerID | CustomerName | CustomerCity |
++---------+------------+--------------+--------------+
+|     101 |          1 | Rahul        | Lucknow      |
+|     102 |          2 | Priya        | Delhi        |
+|     103 |          1 | Rahul        | Lucknow      |
++---------+------------+--------------+--------------+
+
+4. OUTPUT: ORDERPRODUCTS_2NF
+
++---------+-------------+
+| OrderID | ProductName |
++---------+-------------+
+|     101 | Laptop      |
+|     101 | Mouse       |
+|     102 | Keyboard    |
+|     102 | Mouse       |
+|     103 | Keyboard    |
+|     103 | Laptop      |
++---------+-------------+
+
+5. OUTPUT: CUSTOMERS_3NF
+
++------------+--------------+--------------+
+| CustomerID | CustomerName | CustomerCity |
++------------+--------------+--------------+
+|          1 | Rahul        | Lucknow      |
+|          2 | Priya        | Delhi        |
++------------+--------------+--------------+
+
+6. OUTPUT: ORDERS_3NF
+
++---------+------------+
+| OrderID | CustomerID |
++---------+------------+
+|     101 |          1 |
+|     102 |          2 |
+|     103 |          1 |
++---------+------------+
+
+7. OUTPUT: ORDERPRODUCTS_3NF
+
++---------+-------------+
+| OrderID | ProductName |
++---------+-------------+
+|     101 | Laptop      |
+|     101 | Mouse       |
+|     102 | Keyboard    |
+|     102 | Mouse       |
+|     103 | Keyboard    |
+|     103 | Laptop      |
++---------+-------------+
+
+8. OUTPUT: LOSSLESS JOIN VERIFICATION
+
++---------+------------+--------------+--------------+-------------+
+| OrderID | CustomerID | CustomerName | CustomerCity | ProductName |
++---------+------------+--------------+--------------+-------------+
+|     101 |          1 | Rahul        | Lucknow      | Laptop      |
+|     101 |          1 | Rahul        | Lucknow      | Mouse       |
+|     102 |          2 | Priya        | Delhi        | Keyboard    |
+|     102 |          2 | Priya        | Delhi        | Mouse       |
+|     103 |          1 | Rahul        | Lucknow      | Keyboard    |
+|     103 |          1 | Rahul        | Lucknow      | Laptop      |
++---------+------------+--------------+--------------+-------------+
+
+9. OUTPUT: CUSTOMER ID COUNT VERIFICATION
+
++------------+-----------+
+| CustomerID | TotalRows |
++------------+-----------+
+|          1 |         1 |
+|          2 |         1 |
++------------+-----------+
+
+10. OUTPUT: ORDER ID COUNT VERIFICATION
+
++---------+-----------+
+| OrderID | TotalRows |
++---------+-----------+
+|     101 |         1 |
+|     102 |         1 |
+|     103 |         1 |
++---------+-----------+
+
+11. OUTPUT: ORDER-PRODUCT COUNT VERIFICATION
+
++---------+-------------+-----------+
+| OrderID | ProductName | TotalRows |
++---------+-------------+-----------+
+|     101 | Laptop      |         1 |
+|     101 | Mouse       |         1 |
+|     102 | Keyboard    |         1 |
+|     102 | Mouse       |         1 |
+|     103 | Keyboard    |         1 |
+|     103 | Laptop      |         1 |
++---------+-------------+-----------+
+
+RESULT:
+The SQL queries executed successfully in ByteXL. The UNF, 1NF, 2NF, and 3NF tables were displayed, the final JOIN reconstructed all six order-product rows, and the grouped count queries returned the shown results.

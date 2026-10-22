@@ -1,0 +1,102 @@
+CREATE TABLE BankAccounts (
+    AccountID INT PRIMARY KEY,
+    AccountHolder VARCHAR(50),
+    Balance DECIMAL(10,2)
+);
+
+INSERT INTO BankAccounts VALUES
+(101, 'Rahul', 10000.00),
+(102, 'Priya', 8000.00),
+(103, 'Aman', 12000.00);
+
+SELECT * FROM BankAccounts;
+
+START TRANSACTION;
+
+UPDATE BankAccounts
+SET Balance = Balance - 1000
+WHERE AccountID = 101;
+
+UPDATE BankAccounts
+SET Balance = Balance + 1000
+WHERE AccountID = 102;
+
+COMMIT;
+
+SELECT * FROM BankAccounts;
+
+START TRANSACTION;
+
+UPDATE BankAccounts
+SET Balance = Balance - 500
+WHERE AccountID = 101;
+
+SAVEPOINT TransferSavepoint;
+
+UPDATE BankAccounts
+SET Balance = Balance + 500
+WHERE AccountID = 103;
+
+ROLLBACK TO SAVEPOINT TransferSavepoint;
+
+COMMIT;
+
+SELECT * FROM BankAccounts;
+
+START TRANSACTION;
+
+UPDATE BankAccounts
+SET Balance = Balance - 2000
+WHERE AccountID = 102;
+
+ROLLBACK;
+
+SELECT * FROM BankAccounts;
+
+SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
+
+START TRANSACTION;
+
+SELECT * FROM BankAccounts
+WHERE AccountID = 101;
+
+COMMIT;
+
+SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+START TRANSACTION;
+
+SELECT * FROM BankAccounts
+WHERE AccountID = 101;
+
+COMMIT;
+
+SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+START TRANSACTION;
+
+SELECT * FROM BankAccounts
+WHERE AccountID = 101;
+
+COMMIT;
+
+SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+START TRANSACTION;
+
+SELECT * FROM BankAccounts
+WHERE AccountID = 101;
+
+COMMIT;
+
+START TRANSACTION;
+
+UPDATE BankAccounts
+SET Balance = Balance + 100
+WHERE AccountID = 101;
+
+SELECT * FROM BankAccounts;
+
+ROLLBACK;
+
+SELECT * FROM BankAccounts;

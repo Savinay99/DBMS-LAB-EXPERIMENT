@@ -1,0 +1,47 @@
+DBMS EXPERIMENT 10 — OUTPUT
+===========================
+
+Database: MySQL
+Execution time shown by ByteXL: 126 ms
+
+Query:
+SELECT COUNT(*) AS Total_Records FROM SalesOrders;
+
+Output:
++---------------+
+| Total_Records |
++---------------+
+|         10240 |
++---------------+
+
+Query:
+EXPLAIN SELECT * FROM SalesOrders WHERE customer_id = 105;
+
+Output:
++----+-------------+-------------+------------+------+---------------+------+---------+------+-------+----------+-------------+
+| id | select_type | table       | partitions | type | possible_keys | key  | key_len | ref  | rows  | filtered | Extra       |
++----+-------------+-------------+------------+------+---------------+------+---------+------+-------+----------+-------------+
+|  1 | SIMPLE      | SalesOrders | NULL       | ALL  | NULL          | NULL | NULL    | NULL | 10240 |    10.00 | Using where |
++----+-------------+-------------+------------+------+---------------+------+---------+------+-------+----------+-------------+
+
+Query:
+SELECT * FROM SalesOrders WHERE customer_id = 105;
+
+Sample rows from ByteXL output:
++----------+-------------+--------+--------+----------+------------+
+| order_id | customer_id | region | product| amount   | order_date |
++----------+-------------+--------+--------+----------+------------+
+|        5 |         105 | North  | Mobile | 18000.00 | 2026-03-01 |
+|       15 |         105 | North  | Mobile | 18000.00 | 2026-03-01 |
+|       30 |         105 | North  | Mobile | 18000.00 | 2026-03-01 |
+|       40 |         105 | North  | Mobile | 18000.00 | 2026-03-01 |
+|       61 |         105 | North  | Mobile | 18000.00 | 2026-03-01 |
+|       71 |         105 | North  | Mobile | 18000.00 | 2026-03-01 |
+|       81 |         105 | North  | Mobile | 18000.00 | 2026-03-01 |
+|       91 |         105 | North  | Mobile | 18000.00 | 2026-03-01 |
+|      124 |         105 | North  | Mobile | 18000.00 | 2026-03-01 |
+|      134 |         105 | North  | Mobile | 18000.00 | 2026-03-01 |
++----------+-------------+--------+--------+----------+------------+
+
+Note:
+The pasted ByteXL output contains a very large result set for customer_id = 105 and is truncated before the remaining statements' outputs are visible. This file records only the output confirmed in the supplied run; later EXPLAIN results, index verification, and aggregate results are not included because they were not visible in the pasted output.

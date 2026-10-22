@@ -1,0 +1,76 @@
+EXPERIMENT 9 - OUTPUT
+Railway Booking System: Indexing and Query Performance
+Database: MySQL (ByteXL)
+
+1. TOTAL RECORDS
+
++---------------+
+| TotalBookings |
++---------------+
+|          5120 |
++---------------+
+
+2. SAMPLE RAILWAY BOOKING RECORDS (LIMIT 10)
+
++-----------+---------------+-------------+---------------+--------------------+------------+------------+--------+---------------+
+| BookingID | PassengerName | TrainNumber | SourceStation | DestinationStation | TravelDate | SeatNumber | Fare   | BookingStatus |
++-----------+---------------+-------------+---------------+--------------------+------------+------------+--------+---------------+
+|         1 | Rahul         |       12001 | Delhi         | Lucknow            | 2026-11-01 |          1 | 850.00 | Confirmed     |
+|         2 | Priya         |       12002 | Mumbai        | Pune               | 2026-11-02 |          2 | 450.00 | Confirmed     |
+|         3 | Aman          |       12001 | Delhi         | Lucknow            | 2026-11-01 |          3 | 850.00 | Waiting       |
+|         4 | Neha          |       12003 | Chennai       | Bangalore          | 2026-11-03 |          4 | 600.00 | Confirmed     |
+|         5 | Rohan         |       12002 | Mumbai        | Pune               | 2026-11-02 |          5 | 450.00 | Cancelled     |
+|         6 | Passenger6    |       12001 | Delhi         | Lucknow            | 2026-11-01 |          6 | 850.00 | Confirmed     |
+|         7 | Passenger7    |       12002 | Mumbai        | Pune               | 2026-11-02 |          7 | 450.00 | Confirmed     |
+|         8 | Passenger8    |       12001 | Delhi         | Lucknow            | 2026-11-01 |          8 | 850.00 | Waiting       |
+|         9 | Passenger9    |       12003 | Chennai       | Bangalore          | 2026-11-03 |          9 | 600.00 | Confirmed     |
+|        10 | Passenger10   |       12002 | Mumbai        | Pune               | 2026-11-02 |         10 | 450.00 | Cancelled     |
++-----------+---------------+-------------+---------------+--------------------+------------+------------+--------+---------------+
+
+3. EXPLAIN BEFORE CREATING INDEX
+
++----+-------------+----------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table          | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+----------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | RailwayBooking | NULL       | ALL  | NULL          | NULL | NULL    | NULL | 5120 |    10.00 | Using where |
++----+-------------+----------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+
+4. EXPLAIN AFTER CREATING SINGLE-COLUMN INDEX
+
++----+-------------+----------------+------------+------+-----------------+-----------------+---------+-------+------+----------+-------+
+| id | select_type | table          | partitions | type | possible_keys   | key             | key_len | ref   | rows | filtered | Extra |
++----+-------------+----------------+------------+------+-----------------+-----------------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | RailwayBooking | NULL       | ref  | idx_trainnumber | idx_trainnumber | 5       | const | 2048 |   100.00 | NULL  |
++----+-------------+----------------+------------+------+-----------------+-----------------+---------+-------+------+----------+-------+
+
+5. EXPLAIN AFTER CREATING COMPOSITE INDEX
+
++----+-------------+----------------+------------+------+--------------------------------+-----------------+---------+-------+------+----------+-------------+
+| id | select_type | table          | partitions | type | possible_keys                  | key             | key_len | ref   | rows | filtered | Extra       |
++----+-------------+----------------+------------+------+--------------------------------+-----------------+---------+-------+------+----------+-------------+
+|  1 | SIMPLE      | RailwayBooking | NULL       | ref  | idx_trainnumber,idx_train_date | idx_trainnumber | 5       | const | 2048 |    10.00 | Using where |
++----+-------------+----------------+------------+------+--------------------------------+-----------------+---------+-------+------+----------+-------------+
+
+6. FILTERED BOOKINGS SAMPLE
+
+The query filtering TrainNumber = 12001 and TravelDate = '2026-11-01' returned matching booking records. The full result contains many rows, so only a sample is shown below.
+
++-----------+---------------+-------------+---------------+--------------------+------------+------------+--------+---------------+
+| BookingID | PassengerName | TrainNumber | SourceStation | DestinationStation | TravelDate | SeatNumber | Fare   | BookingStatus |
++-----------+---------------+-------------+---------------+--------------------+------------+------------+--------+---------------+
+|         1 | Rahul         |       12001 | Delhi         | Lucknow            | 2026-11-01 |          1 | 850.00 | Confirmed     |
+|         3 | Aman          |       12001 | Delhi         | Lucknow            | 2026-11-01 |          3 | 850.00 | Waiting       |
+|         6 | Passenger6    |       12001 | Delhi         | Lucknow            | 2026-11-01 |          6 | 850.00 | Confirmed     |
+|         8 | Passenger8    |       12001 | Delhi         | Lucknow            | 2026-11-01 |          8 | 850.00 | Waiting       |
+|        11 | Passenger11   |       12001 | Delhi         | Lucknow            | 2026-11-01 |         11 | 850.00 | Confirmed     |
++-----------+---------------+-------------+---------------+--------------------+------------+------------+--------+---------------+
+
+7. INDEX VERIFICATION
+
+The SHOW INDEX FROM RailwayBooking query was executed to inspect the indexes created on the table, including the primary key and the train-number and composite indexes.
+
+RESULT:
+A RailwayBooking table containing 5,120 records was created. EXPLAIN showed a full table scan before the TrainNumber index was added and use of the idx_trainnumber index afterward. The composite index was also created and the filtered booking query was executed.
+
+NOTE:
+The full filtered query output is intentionally not reproduced because it contains a large number of rows. The sample above represents the first records shown in the ByteXL output. Query-plan estimates can vary depending on the MySQL optimizer and statistics.

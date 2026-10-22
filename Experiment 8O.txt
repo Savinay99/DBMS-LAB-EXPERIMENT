@@ -1,0 +1,101 @@
+EXPERIMENT 8 - OUTPUT
+Banking Transactions and Transaction Isolation
+Database: MySQL (ByteXL)
+
+1. INITIAL BANK ACCOUNTS
+
++-----------+---------------+----------+
+| AccountID | AccountHolder | Balance  |
++-----------+---------------+----------+
+|       101 | Rahul         | 10000.00 |
+|       102 | Priya         |  8000.00 |
+|       103 | Aman          | 12000.00 |
++-----------+---------------+----------+
+
+2. OUTPUT AFTER COMMITTED TRANSFER
+
++-----------+---------------+----------+
+| AccountID | AccountHolder | Balance  |
++-----------+---------------+----------+
+|       101 | Rahul         |  9000.00 |
+|       102 | Priya         |  9000.00 |
+|       103 | Aman          | 12000.00 |
++-----------+---------------+----------+
+
+3. OUTPUT AFTER SAVEPOINT AND PARTIAL ROLLBACK
+
++-----------+---------------+----------+
+| AccountID | AccountHolder | Balance  |
++-----------+---------------+----------+
+|       101 | Rahul         |  8500.00 |
+|       102 | Priya         |  9000.00 |
+|       103 | Aman          | 12000.00 |
++-----------+---------------+----------+
+
+4. OUTPUT AFTER FULL ROLLBACK
+
++-----------+---------------+----------+
+| AccountID | AccountHolder | Balance  |
++-----------+---------------+----------+
+|       101 | Rahul         |  8500.00 |
+|       102 | Priya         |  9000.00 |
+|       103 | Aman          | 12000.00 |
++-----------+---------------+----------+
+
+5. OUTPUT WITH READ COMMITTED ISOLATION LEVEL
+
++-----------+---------------+---------+
+| AccountID | AccountHolder | Balance |
++-----------+---------------+---------+
+|       101 | Rahul         | 8500.00 |
++-----------+---------------+---------+
+
+6. OUTPUT WITH REPEATABLE READ ISOLATION LEVEL
+
++-----------+---------------+---------+
+| AccountID | AccountHolder | Balance |
++-----------+---------------+---------+
+|       101 | Rahul         | 8500.00 |
++-----------+---------------+---------+
+
+7. OUTPUT WITH SERIALIZABLE ISOLATION LEVEL
+
++-----------+---------------+---------+
+| AccountID | AccountHolder | Balance |
++-----------+---------------+---------+
+|       101 | Rahul         | 8500.00 |
++-----------+---------------+---------+
+
+8. OUTPUT WITH READ UNCOMMITTED ISOLATION LEVEL
+
++-----------+---------------+---------+
+| AccountID | AccountHolder | Balance |
++-----------+---------------+---------+
+|       101 | Rahul         | 8500.00 |
++-----------+---------------+---------+
+
+9. OUTPUT BEFORE FINAL ROLLBACK
+
++-----------+---------------+----------+
+| AccountID | AccountHolder | Balance  |
++-----------+---------------+----------+
+|       101 | Rahul         |  8600.00 |
+|       102 | Priya         |  9000.00 |
+|       103 | Aman          | 12000.00 |
++-----------+---------------+----------+
+
+10. FINAL OUTPUT AFTER ROLLBACK
+
++-----------+---------------+----------+
+| AccountID | AccountHolder | Balance  |
++-----------+---------------+----------+
+|       101 | Rahul         |  8500.00 |
+|       102 | Priya         |  9000.00 |
+|       103 | Aman          | 12000.00 |
++-----------+---------------+----------+
+
+RESULT:
+The transaction commands were executed in ByteXL. The committed transfer changed the balances of the source and destination accounts. SAVEPOINT and ROLLBACK demonstrated partial and complete rollback behavior. The four isolation-level queries returned the displayed account balance. The final rollback restored Rahul's balance from 8600.00 to 8500.00.
+
+NOTE:
+These outputs show transaction commands and isolation-level queries in one ByteXL execution. Demonstrating concurrency anomalies such as dirty reads, non-repeatable reads, and phantom reads requires two separate concurrent database sessions; the single-session output above does not independently demonstrate those anomalies.
