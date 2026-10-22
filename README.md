@@ -6,8 +6,8 @@ A collection of database management system lab experiments covering database des
 
 | No. | Experiment | Source File | Output File |
 |---:|---|---|---|
-| 1 | E-commerce ER Diagram | [Experiment 1.pdf](Experiment%201.pdf) | — |
-| 2 | Relational Schema and Constraints | [Experiment 2.pdf](Experiment%202.pdf) | — |
+| 1 | E-commerce ER Diagram | [Experiment 1.pdf](Experiment%201.pdf) | - |
+| 2 | Relational Schema and Constraints | [Experiment 2.pdf](Experiment%202.pdf) | - |
 | 3 | SQL Queries and Aggregate Functions | [Experiment 3I.sql](Experiment%203I.sql) | [Experiment 3O.txt](Experiment%203O.txt) |
 | 4 | Joins, Subqueries and EXPLAIN | [Experiment 4I.sql](Experiment%204I.sql) | [Experiment 4O.txt](Experiment%204O.txt) |
 | 5 | Views and Recursive CTE | [Experiment 5I.sql](Experiment%205I.sql) | [Experiment 5O.txt](Experiment%205O.txt) |
